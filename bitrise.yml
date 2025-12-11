@@ -305,11 +305,3 @@ app:
   - FLUTTER_VERSION: stable
     opts:
       is_expand: false
-
-# ============================================
-# META - Bitrise Stack Configuration
-# ============================================
-# Stack та Machine type налаштовуються в Bitrise UI
-# (Settings → Stack & Machine)
-# Це дозволяє використовувати дефолтні налаштування проекту
-# без хардкоду в yml файлі
