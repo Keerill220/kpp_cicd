@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "269504686011",
+    "project_id": "water-tracker-3d22f3",
+    "storage_bucket": "water-tracker-3d22f3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269504686011:android:db266de0e21cf61aff869e",
+        "android_client_info": {
+          "package_name": "com.example.water_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkf5H6iGE1qHD5-Zd9pVsxwW0ditWBFLk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
