@@ -5,18 +5,6 @@ default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: flutter
 
 # ============================================
-# TRIGGER CONFIGURATION
-# ============================================
-# Автоматичний запуск при push в main або pull request
-triggers:
-  push:
-    - branch: main
-      workflow: android_firebase
-  pull_request:
-    - source_branch: "*"
-      workflow: android_firebase
-
-# ============================================
 # WORKFLOWS
 # ============================================
 workflows:
