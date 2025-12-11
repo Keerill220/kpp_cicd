@@ -309,7 +309,7 @@ app:
 # ============================================
 # META - Bitrise Stack Configuration
 # ============================================
-meta:
-  bitrise.io:
-    stack: linux-docker-android-22.04
-    machine_type_id: standard
+# Stack та Machine type налаштовуються в Bitrise UI
+# (Settings → Stack & Machine)
+# Це дозволяє використовувати дефолтні налаштування проекту
+# без хардкоду в yml файлі
