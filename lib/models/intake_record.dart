@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class IntakeRecord {
   final String? id;
   final String time;
-  final int amount; // in ml
+  final int amount;
   final String type;
   final DateTime createdAt;
 
@@ -51,6 +51,5 @@ class IntakeRecord {
     );
   }
 
-  // Helper to get formatted amount string
   String get formattedAmount => '$amount ml';
 }

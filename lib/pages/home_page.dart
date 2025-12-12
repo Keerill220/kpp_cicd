@@ -553,12 +553,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> _showRandomCatImage(BuildContext context) async {
-    // Generate random number 1-5
     final random = Random();
     final catNumber = random.nextInt(5) + 1;
     final imageName = 'cat$catNumber.jpg';
 
-    // Show loading dialog
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -568,7 +566,6 @@ class _HomePageState extends State<HomePage> {
     );
 
     try {
-      // Get download URL from Firebase Storage
       final storage = FirebaseStorage.instance;
       debugPrint('Storage bucket: ${storage.bucket}');
       debugPrint('Trying to get: $imageName');
@@ -579,10 +576,8 @@ class _HomePageState extends State<HomePage> {
       final imageUrl = await ref.getDownloadURL();
       debugPrint('Got URL: $imageUrl');
 
-      // Close loading dialog
       if (context.mounted) Navigator.of(context).pop();
 
-      // Show cat image dialog
       if (context.mounted) {
         showDialog(
           context: context,
