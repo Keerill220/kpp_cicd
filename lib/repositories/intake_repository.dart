@@ -24,7 +24,36 @@ class IntakeRepository {
         .collection('intake_records');
   }
 
-  Future<List<IntakeRecord>> fetchIntakeRecords() async {
+  /// Get start and end of today in device's local timezone
+  (DateTime, DateTime) _getTodayRange() {
+    final now = DateTime.now();
+    final startOfDay = DateTime(now.year, now.month, now.day);
+    final endOfDay = startOfDay.add(const Duration(days: 1));
+    return (startOfDay, endOfDay);
+  }
+
+  /// Fetch only today's intake records (device timezone)
+  Future<List<IntakeRecord>> fetchTodayIntakeRecords() async {
+    final (startOfDay, endOfDay) = _getTodayRange();
+    
+    try {
+      final snapshot = await _intakeCollection
+          .where('createdAt',
+              isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDay))
+          .where('createdAt', isLessThan: Timestamp.fromDate(endOfDay))
+          .orderBy('createdAt', descending: true)
+          .get();
+
+      return snapshot.docs
+          .map((doc) => IntakeRecord.fromFirestore(doc))
+          .toList();
+    } catch (e) {
+      throw Exception('Failed to fetch today\'s intake records: $e');
+    }
+  }
+
+  /// Fetch all intake records (for history view if needed)
+  Future<List<IntakeRecord>> fetchAllIntakeRecords() async {
     try {
       final snapshot = await _intakeCollection
           .orderBy('createdAt', descending: true)
@@ -66,10 +95,9 @@ class IntakeRepository {
     }
   }
 
+  /// Get today's total water intake (device timezone)
   Future<int> getTodayTotalIntake() async {
-    final now = DateTime.now();
-    final startOfDay = DateTime(now.year, now.month, now.day);
-    final endOfDay = startOfDay.add(const Duration(days: 1));
+    final (startOfDay, endOfDay) = _getTodayRange();
 
     try {
       final snapshot = await _intakeCollection
@@ -88,4 +116,3 @@ class IntakeRepository {
     }
   }
 }
-//comment test

@@ -23,7 +23,8 @@ class IntakeHistoryBloc extends Bloc<IntakeHistoryEvent, IntakeHistoryState> {
   ) async {
     emit(IntakeHistoryLoading());
     try {
-      final intakeHistory = await _repository.fetchIntakeRecords();
+      // Fetch only today's records (device timezone)
+      final intakeHistory = await _repository.fetchTodayIntakeRecords();
       final todayTotal = await _repository.getTodayTotalIntake();
       emit(IntakeHistoryLoaded(intakeHistory, todayTotal: todayTotal));
     } catch (e) {
