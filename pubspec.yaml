@@ -1,7 +1,12 @@
-name: water_tracker
-description: "A tracker app for water intake and hydration goals."
+name: HydroCheck
+description: "Water Tracker App - Track your daily water intake"
 publish_to: 'none'
 
+# Version format: MAJOR.MINOR.PATCH+BUILD
+# - MAJOR: Breaking changes
+# - MINOR: New features (backwards compatible)
+# - PATCH: Bug fixes
+# - BUILD: Incremental build number (must increase for each Play Store release)
 version: 1.0.0+1
 
 environment:
@@ -28,9 +33,17 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^5.0.0
+  flutter_launcher_icons: ^0.14.3
 
 flutter:
   uses-material-design: true
+
+# App icon configuration
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/app_icon.png"
+  adaptive_icon_background: "#4FC3F7"
+  adaptive_icon_foreground: "assets/icon/app_icon_foreground.png"
 
